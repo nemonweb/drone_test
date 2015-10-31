@@ -5,10 +5,10 @@ build:
   script:
     - cp config/database.drone.yml config/database.yml
     - mkdir -p /tmp/bundle
+    - sudo chown -R ubuntu:ubuntu /tmp/bundle
     - bundle install --path /tmp/bundle
     - bundle exec rake tmp:create
-    - bundle exec rake db:create
-    - bundle exec rake db:schema:load
+    - bundle exec rake db:create db:schema:load
     - bundle exec rspec spec --format documentation
 
 compose:
