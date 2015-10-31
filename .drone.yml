@@ -1,5 +1,5 @@
 build:
-  image: rails:4.2
+  image: nikitati:rails
   environment:
     - RAILS_ENV=test
   script:
