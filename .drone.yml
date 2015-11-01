@@ -1,10 +1,10 @@
+services:
+  - mysql:5.5
+  
 build:
   image: nikitati/rails
   environment:
     - RAILS_ENV=test
-  services:
-    - mysql:5.5
-
   commands:
     - mysql -P 3306 -h 127.0.0.1 --protocol=tcp -u root -e 'create database if not exists drone;'
     - cp config/database.drone.yml config/database.yml
