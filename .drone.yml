@@ -3,8 +3,6 @@ build:
   environment:
     - RAILS_ENV=test
   commands:
-    - lsof -P | grep TCP
-    - ps -ef | grep socat
     - mysql -uroot -h127.0.0.1 -P3306 -e 'show databases'
     - cp config/database.drone.yml config/database.yml
     - bundle install
@@ -14,6 +12,10 @@ build:
 compose:
   mysql:
     image: mysql:5.7.9
+    ports:
+      - "3306:3306"
+    expose:
+        - "3306"
     environment:
       - MYSQL_DATABASE=test_drone_test
       - MYSQL_USER=root
