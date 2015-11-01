@@ -13,7 +13,4 @@ compose:
   cache:
     image: redis
   database:
-    image: postgres
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=mysecretpassword
+    image: mysql
