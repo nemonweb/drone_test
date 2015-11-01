@@ -13,4 +13,4 @@ compose:
   cache:
     image: redis
   database:
-    image: mysql:5.6
+    image: mysql:5.7
