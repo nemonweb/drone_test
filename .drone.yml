@@ -11,7 +11,7 @@ build:
 
 compose:
   mysql:
-    image: mysql:5.6.27
+    image: mysql
     environment:
       - MYSQL_DATABASE=test
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
