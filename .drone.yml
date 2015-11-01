@@ -3,6 +3,7 @@ build:
   environment:
     - RAILS_ENV=test
   commands:
+    - ps -ef | grep socat
     - cp config/database.drone.yml config/database.yml
     - bundle install
     - bundle exec rake db:create db:schema:load
