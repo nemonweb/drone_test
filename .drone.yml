@@ -2,17 +2,8 @@ build:
   image: nikitati/rails
   environment:
     - RAILS_ENV=test
-  compose:
-    mysql:
-      image: mysql:5.7.9
-      ports:
-        - "3306:3306"
-      expose:
-          - "3306"
-      environment:
-        - MYSQL_DATABASE=test_drone_test
-        - MYSQL_USER=root
-        - MYSQL_ROOT_PASSWORD=test_drone
+  services:
+    - mysql:5.5
 
   commands:
     - mysql -P 3306 -h 127.0.0.1 --protocol=tcp -u root -e 'create database if not exists drone;'
