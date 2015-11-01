@@ -2,7 +2,7 @@ build:
   image: nikitati/rails
   environment:
     - RAILS_ENV=test
-  script:
+  commands:
     - cp config/database.drone.yml config/database.yml
     - bundle install
     - bundle exec rake db:create db:schema:load
