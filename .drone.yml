@@ -1,4 +1,3 @@
-debug: true
 build:
   image: nikitati/rails
   environment:
@@ -11,5 +10,10 @@ build:
     - bundle exec rspec spec --format documentation
 
 compose:
-  mysql:
-    image: mysql
+  cache:
+    image: redis
+  database:
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=mysecretpassword
