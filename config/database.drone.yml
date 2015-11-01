@@ -1,6 +1,6 @@
 test: &test
   adapter: mysql2
-  host: database
+  host: localhost
   port: 3306
   database: test_drone_test
   username: root
