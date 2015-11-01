@@ -3,6 +3,7 @@ build:
   environment:
     - RAILS_ENV=test
   commands:
+    - sleep 100
     - mysql -h127.0.0.1 -u root -e 'create database if not exists drone;'
 
 compose:
