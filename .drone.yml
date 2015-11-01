@@ -3,6 +3,7 @@ build:
   environment:
     - RAILS_ENV=test
   commands:
+    - redis-cli ping
     - mysql -P 3306 -h 127.0.0.1 -u root -e 'create database if not exists drone;'
     - cp config/database.drone.yml config/database.yml
     - bundle install
