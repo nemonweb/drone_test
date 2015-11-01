@@ -3,7 +3,6 @@ build:
   environment:
     - RAILS_ENV=test
   commands:
-    - docker ps
     - mysql -uroot -h127.0.0.1 -P3306 -e 'show databases'
     - cp config/database.drone.yml config/database.yml
     - bundle install
