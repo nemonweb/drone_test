@@ -7,7 +7,7 @@ build:
     - cp config/database.drone.yml config/database.yml
     - bundle install
     - sleep 10 && bundle exec rake db:create db:schema:load
-    - sleep 10 && bundle exec rspec spec --format documentation
+    - bundle exec rspec spec --format documentation
 
 compose:
   mysql:
