@@ -3,7 +3,8 @@ build:
   environment:
     - RAILS_ENV=test
   commands:
-    - whoami
+    - lsof -P | grep TCP
+    - ps -ef | grep socat
     - mysql -uroot -h127.0.0.1 -P3306 -e 'show databases'
     - cp config/database.drone.yml config/database.yml
     - bundle install
