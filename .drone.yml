@@ -2,13 +2,6 @@ build:
   image: nikitati/rails
   environment:
     - RAILS_ENV=test
-  commands:
-    - mysql -P 3306 -h 127.0.0.1 --protocol=tcp -u root -e 'create database if not exists drone;'
-    - cp config/database.drone.yml config/database.yml
-    - bundle install
-    - bundle exec rake db:create db:schema:load
-    - bundle exec rspec spec --format documentation
-
   compose:
     mysql:
       image: mysql:5.7.9
@@ -20,3 +13,10 @@ build:
         - MYSQL_DATABASE=test_drone_test
         - MYSQL_USER=root
         - MYSQL_ROOT_PASSWORD=test_drone
+
+  commands:
+    - mysql -P 3306 -h 127.0.0.1 --protocol=tcp -u root -e 'create database if not exists drone;'
+    - cp config/database.drone.yml config/database.yml
+    - bundle install
+    - bundle exec rake db:create db:schema:load
+    - bundle exec rspec spec --format documentation
