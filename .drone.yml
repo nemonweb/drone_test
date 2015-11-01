@@ -4,7 +4,7 @@ build:
     - RAILS_ENV=test
   commands:
     - whoami
-    - mysql -uroot -h127.0.0.1 -P3306 -e 'show databases'
+    - mysql -uroot -hmysql -P3306 -e 'show databases'
     - cp config/database.drone.yml config/database.yml
     - bundle install
     - bundle exec rake db:create db:schema:load
