@@ -9,7 +9,7 @@ build:
     - bundle exec rspec spec --format documentation
 
 compose:
-  database:
+  mysql:
     image: mysql
     environment:
       - MYSQL_DATABASE=test_drone_test
