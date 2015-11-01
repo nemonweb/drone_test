@@ -3,15 +3,8 @@ build:
   environment:
     - RAILS_ENV=test
   commands:
-    - docker -v
     - mysql -h127.0.0.1 -u root -e 'create database if not exists drone;'
-    - cp config/database.drone.yml config/database.yml
-    - bundle install
-    - bundle exec rake db:create db:schema:load
-    - bundle exec rspec spec --format documentation
 
 compose:
-  cache:
-    image: redis
   database:
     image: mysql:5.7
