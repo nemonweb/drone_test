@@ -6,7 +6,7 @@ build:
     # - sleep 1 && mysql -h127.0.0.1 -u root -e 'create database if not exists drone;'
     - cp config/database.drone.yml config/database.yml
     - bundle install
-    - sleep 9
+    - sleep 8
     - bundle exec rake db:create db:schema:load
     - bundle exec rspec spec --format documentation
 
