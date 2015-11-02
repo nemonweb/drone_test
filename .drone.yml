@@ -7,7 +7,9 @@ build:
     - chmod +x ./ci/wailmysql.sh && ./ci/wailmysql.sh
     - cp config/database.drone.yml config/database.yml
     - cp config/settings.example.yml config/settings.yml
-    - bundle install
+    - mkdir -p /tmp/bundle
+    - sudo chown ubuntu:ubuntu /tmp/bundler
+    - bundle install --quiet --path /tmp/bundle
     - bundle exec rake db:create db:schema:load
     - bundle exec rspec spec --format documentation
 
@@ -21,3 +23,8 @@ compose:
       image: library/elasticsearch
   redis:
       image: redis
+
+cache:
+  mount:
+    - /tmp/bundle
+    - .git
