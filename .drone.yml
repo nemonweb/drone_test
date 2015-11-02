@@ -21,8 +21,6 @@ compose:
     environment:
       - MYSQL_DATABASE=test
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
-  elastic:
-      image: library/elasticsearch
   redis:
       image: redis
 
