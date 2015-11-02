@@ -3,7 +3,7 @@ build:
   environment:
     - RAILS_ENV=test
   commands:
-    - ./ci/wailmysql.sh
+    - chmod +x ./ci/wailmysql.sh && ./ci/wailmysql.sh
     - cp config/database.drone.yml config/database.yml
     - bundle install
     - bundle exec rake db:create db:schema:load
