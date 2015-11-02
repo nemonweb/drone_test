@@ -1,5 +1,5 @@
 build:
-  image: eunix/drone-docker-inpos-core:2.2.1
+  image: nikitati/rails
   environment:
     - RAILS_ENV=test
     - TEST_CLUSTER_COMMAND=/usr/share/elasticsearch/bin/elasticsearch
@@ -7,7 +7,6 @@ build:
     - cp config/database.drone.yml config/database.yml
     - cp config/settings.example.yml config/settings.yml
     - mkdir -p /tmp/bundle
-    - sudo chown ubuntu:ubuntu /tmp/bundle
     - bundle config build.nokogiri --use-system-libraries
     - bundle install --path /tmp/bundle
     - chmod +x ./ci/wailmysql.sh && ./ci/wailmysql.sh
