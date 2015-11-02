@@ -8,8 +8,9 @@ build:
     - cp config/database.drone.yml config/database.yml
     - cp config/settings.example.yml config/settings.yml
     - mkdir -p /tmp/bundle
+    - chown -R ubuntu:ubuntu /tmp/bundle
     - bundle install --path /tmp/bundle
-    - bundle exec rake db:create db:schema:load
+    - bundle exec rake tmp:create rake db:create db:schema:load
     - bundle exec rspec spec --format documentation
 
 compose:
