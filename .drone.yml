@@ -24,4 +24,5 @@ compose:
       image: redis
 
 cache:
-  - /tmp/bundle
+  mount:
+    - /tmp/bundle
