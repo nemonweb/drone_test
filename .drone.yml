@@ -1,5 +1,5 @@
 build:
-  image: eunix/drone-docker-inpos-core:2.2.1
+  image: nikitati/rails
   environment:
     - RAILS_ENV=test
     - TEST_CLUSTER_COMMAND=/usr/share/elasticsearch/bin/elasticsearch
