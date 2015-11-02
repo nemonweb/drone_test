@@ -1,14 +1,11 @@
 build:
-  image: nikitati/rails
+  image: eunix/drone-docker-inpos-core:2.2.1
   environment:
     - RAILS_ENV=test
     - TEST_CLUSTER_COMMAND=/usr/share/elasticsearch/bin/elasticsearch
   commands:
     - cp config/database.drone.yml config/database.yml
     - cp config/settings.example.yml config/settings.yml
-    # - mkdir -p /tmp/bundle
-    - bundle config build.nokogiri --use-system-libraries
-    # - gem install nokogiri -v '1.6.6.2'
     - bundle install
     - chmod +x ./ci/wailmysql.sh && ./ci/wailmysql.sh
     - bundle exec rake db:create db:schema:load
@@ -24,8 +21,3 @@ compose:
       image: library/elasticsearch
   redis:
       image: redis
-
-cache:
-  mount:
-    # - /tmp/bundle
-    - .git
