@@ -2,8 +2,7 @@ test: &test
   adapter: mysql2
   host: 127.0.0.1
   port: 3306
-  database: test_drone_test
+  database: test
   username: root
-  password: test_drone
   strict: true
   encoding: utf8
