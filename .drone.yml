@@ -5,12 +5,13 @@ build:
   commands:
     - '#!/bin/bash
     n=0
-    while [ $n -ge 60 ]
+    until [ $n -ge 60 ]
     do
       mysqladmin ping -h"127.0.0.1" --silent && break
       sleep 1
       n=$[$n+1]
     done'
+    - mysqladmin ping -h"127.0.0.1"
     - cp config/database.drone.yml config/database.yml
     - bundle install
     - bundle exec rake db:create db:schema:load
