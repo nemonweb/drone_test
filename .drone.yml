@@ -2,17 +2,27 @@ build:
   image: nikitati/rails
   environment:
     - RAILS_ENV=test
+    - TEST_CLUSTER_COMMAND=/usr/share/elasticsearch/bin/elasticsearch
   commands:
     - chmod +x ./ci/wailmysql.sh && ./ci/wailmysql.sh
     - cp config/database.drone.yml config/database.yml
-    - bundle install
+    - cp config/settings.example.yml config/settings.yml
+    - mkdir -p /tmp/bundle
+    - bundle install --path /tmp/bundle
     - bundle exec rake db:create db:schema:load
     - bundle exec rspec spec --format documentation
 
 compose:
   mysql:
-    image: mysql:5.6.27
+    image: mysql
     environment:
-      - MYSQL_DATABASE=test_drone_test
-      - MYSQL_USER=root
-      - MYSQL_ROOT_PASSWORD=test_drone
+      - MYSQL_DATABASE=test
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+  elastic:
+      image: library/elasticsearch
+  redis:
+      image: redis
+
+cache:
+  mount:
+    - /tmp/bundle
