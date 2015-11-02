@@ -7,6 +7,8 @@ build:
     - cp config/database.drone.yml config/database.yml
     - cp config/settings.example.yml config/settings.yml
     - mkdir -p /tmp/bundle
+    # - bundle config build.nokogiri --use-system-libraries
+    # - gem install nokogiri -v '1.6.6.2'
     - bundle install --path /tmp/bundle
     - chmod +x ./ci/wailmysql.sh && ./ci/wailmysql.sh
     - bundle exec rake db:create db:schema:load
@@ -26,3 +28,4 @@ compose:
 cache:
   mount:
     - /tmp/bundle
+    # - .git
