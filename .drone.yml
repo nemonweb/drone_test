@@ -10,7 +10,7 @@ build:
     - mkdir -p /tmp/bundle
     - sudo chown ubuntu:ubuntu /tmp/bundle
     - gem install nokogiri -v '1.6.6.2'
-    - bundle install --quiet --path /tmp/bundle
+    - bundle install --path /tmp/bundle
     - bundle exec rake db:create db:schema:load
     - bundle exec rspec spec --format documentation
 
