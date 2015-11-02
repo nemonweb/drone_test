@@ -3,8 +3,7 @@ build:
   environment:
     - RAILS_ENV=test
   commands:
-    - >
-      #!/bin/bash
+    - > #!/bin/bash
       n=0
       while [ $n -ge 60 ]; do
           mysqladmin ping -h"127.0.0.1" --silent && break
